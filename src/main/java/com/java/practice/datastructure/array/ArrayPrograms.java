@@ -210,7 +210,7 @@ public class ArrayPrograms {
     public List<Integer> reverseArrayUsingCollections() {
         int[] arr1 = { 7, 6, 3, 1, 10, 9, 2, 4, 5, 8 };
         Arrays.sort(arr1);
-        List<Integer> list = new Arraylist<>();
+        List<Integer> list = new ArrayList<>();
         for (int num : arr1) {
             list.add(num);
         }
