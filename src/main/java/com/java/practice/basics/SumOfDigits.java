@@ -1,7 +1,7 @@
-package com.basics;
+package com.java.practice.basics;
 
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Hello world!

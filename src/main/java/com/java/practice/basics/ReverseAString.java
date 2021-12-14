@@ -1,4 +1,4 @@
-package com.basics;
+package com.java.practice.basics;
 
 public class ReverseAString {
     public static void main(String[] args) {

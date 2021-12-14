@@ -1,4 +1,4 @@
-package com.basics;
+package com.java.practice.basics;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
