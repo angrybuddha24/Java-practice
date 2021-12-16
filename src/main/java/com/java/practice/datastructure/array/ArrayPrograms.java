@@ -2,6 +2,7 @@ package com.java.practice.datastructure.array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -298,6 +299,111 @@ public class ArrayPrograms {
         return arr2;
     }
 
+    public int[] insertElementsAtSpecificPosition() {
+        int[] arr1 = { 24, 36, 9, 8, 32 };
+        int num = 99;
+        int position = 2;
+        int[] arr2 = new int[position + 1];
+        for (int i = 0; i < arr2.length; i++) {
+            if (i != position) {
+                arr2[i] = arr1[i];
+            } else {
+                arr2[i] = num;
+            }
+        }
+        System.out.println(arr2.length);
+        int[] arr3 = Arrays.copyOf(arr2, arr1.length + 1);
+        for (int i = position + 1; i < arr3.length; i++) { // don't use arr2.length since the length of the arr2 will be
+                                                           // 3 and not 6
+            arr3[i] = arr1[i - 1];
+        }
+
+        return arr3;
+    }
+
+    public int[] insertElementsAtSpecificPositionUsingEnhancedFor() {
+        int[] arr1 = { 24, 36, 9, 8, 32 };
+        int num = 99;
+        int position = 2;
+        int[] arr2 = new int[arr1.length + 1];
+        for (int i = 0, j = 0; i < arr2.length; i++) {
+            if (i == position) {
+                arr2[i] = num;
+            } else {
+                arr2[i] = arr1[j++];
+            }
+        }
+
+        return arr2;
+    }
+
+    public int[] insertElementsAtSpecificPositionUsingArrayList() {
+        int[] arr1 = { 24, 36, 9, 8, 32 };
+        int num = 99;
+        int position = 2;
+        List<Integer> list = new ArrayList<>(Collections.nCopies(arr1.length + 1, 0));
+        // size and capacity of a list are different. When new ArrayList<>(10) is used,
+        // just the capacity of the arrylist is defined, the size is still 0.
+        // so, no set operations can be performed, only add operations can be performed.
+        // new ArrayList<>(Collections.nCopies(arr1.length+1, 0)) results in a list with
+        // n number of 0s.
+        // now if we try to add or set elements in the list we won't get indexoutofbound
+        // exception
+        for (int i = 0; i < arr1.length + 1; i++) {
+            if (i == position) {
+                list.set(i, num);
+            } else if (i < position) {
+                list.set(i, arr1[i]);
+            } else {
+                list.set(i, arr1[i - 1]);
+            }
+        }
+
+        int[] arr2 = new int[arr1.length + 1];
+        for (int i = 0; i < arr1.length + 1; i++) {
+            arr2[i] = list.get(i);
+        }
+
+        return arr2;
+    }
+
+    public int[] addElementToArray() {
+        int[] arr1 = { 24, 36, 9, 8, 32 };
+        int num = 99;
+        int[] arr2 = Arrays.copyOf(arr1, arr1.length + 1);
+        arr2[arr2.length - 1] = num;
+        return arr2;
+    }
+
+    public int[] removeElementFromArray() {
+        int[] arr1 = { 24, 36, 9, 8, 32 };
+        int num = 9;
+        int[] arr2 = new int[arr1.length - 1];
+        List<Integer> list = new ArrayList<>(arr1.length - 1);
+        for (int i : arr1) {
+            if (i != num) 
+                list.add(i);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            arr2[i] = list.get(i);
+        }
+        return arr2;
+    }
+
+    public int countRepeatedElementsInArray() {
+        int[] arr1 = { 24, 36, 24, 8, 36 };
+        int repeatedElements = 0;
+        Arrays.sort(arr1);
+        for(int i=0;i<arr1.length-1;i++){
+            if(arr1[i]==arr1[i+1])
+                repeatedElements++;
+        }
+        return repeatedElements;
+        
+    }
+
+    
+
     public static void main(String[] args) {
         // new ArrayPrograms().arrayDeclaration();
         // new ArrayPrograms().arrayAccess();
@@ -327,7 +433,16 @@ public class ArrayPrograms {
         // System.out.println(new ArrayPrograms().gcdOfNumbers());
         // System.out.println(new ArrayPrograms().linearSearch());
         // System.out.println(new ArrayPrograms().binarySearch());
-        System.out.println(Arrays.toString(new ArrayPrograms().removeDuplicates()));
+        // System.out.println(Arrays.toString(new ArrayPrograms().removeDuplicates()));
+        // System.out.println(Arrays.toString(new
+        // ArrayPrograms().insertElementsAtSpecificPosition()));
+        // System.out.println(Arrays.toString(new
+        // ArrayPrograms().insertElementsAtSpecificPositionUsingEnhancedFor()));
+        // System.out.println(Arrays.toString(new
+        // ArrayPrograms().insertElementsAtSpecificPositionUsingArrayList()));
+        // System.out.println(Arrays.toString(new ArrayPrograms().addElementToArray()));
+        // System.out.println(Arrays.toString(new ArrayPrograms().removeElementFromArray()));
+        System.out.println(new ArrayPrograms().countRepeatedElementsInArray());
 
     }
 }
