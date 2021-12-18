@@ -3,6 +3,7 @@ package com.java.practice.datastructure.array;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FindDuplicateElements {
     public static void main(String[] args) {
@@ -12,8 +13,9 @@ public class FindDuplicateElements {
         // System.out.println(Arrays.toString(new FindDuplicateElements()
         // .findDuplicateElementsUsingSorting(new int[] { 1, 2, 6, 1, 5, 6, 4, 9, 7, 2
         // })));
-        System.out.println(Arrays.toString(new FindDuplicateElements()
-                .findDuplicateElementsUsingHashSet(new int[] { 1, 2, 6, 1, 5, 6, 4, 9, 7, 2 })));
+        // System.out.println(Arrays.toString(new FindDuplicateElements()
+        //         .findDuplicateElementsUsingHashSet(new int[] { 1, 2, 6, 1, 5, 6, 4, 9, 7, 2 })));
+                new FindDuplicateElements().findDuplicatesUsingJava8(new int[] { 1, 2, 6, 1, 5, 6, 4, 9, 7, 2 });
     }
 
     public int[] findDuplicateElementsUsingBruteForce(int[] arr) {
@@ -57,6 +59,16 @@ public class FindDuplicateElements {
         }
 
         return Arrays.stream(output).filter(num -> num != 0).toArray();
+    }
+
+    public void findDuplicatesUsingJava8(int[] arr) {
+
+        Set<Integer> uniqueElements = new HashSet<>();
+        Set<Integer> duplicateElements = Arrays.stream(arr)
+                .filter(i -> !uniqueElements.add(i))
+                .boxed()
+                .collect(Collectors.toSet());
+        System.out.println(duplicateElements);
     }
 
 }
