@@ -1,4 +1,4 @@
-package com.java.practice.datastructure.array;
+package com.java.practice.coderbyte;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,4 +36,5 @@ public class TreeConstructor {
         System.out.println(
                 new TreeConstructor().treeConstructor(new String[] { "(1,2)", "(2,4)", "(5,7)", "(7,2)", "(9,5)" }));
     }
+
 }
