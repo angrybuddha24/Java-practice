@@ -1,4 +1,4 @@
-package com.java.practice.string;
+package com.java.practice.datastructure.string;
 
 public class SumOfDigitsInAString {
     public static void main(String[] args) {
